@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Complete Auto Repair & Collision Inc | Flushing, NY</title>
+  <meta name="description" content="Expert auto repair and collision services in Flushing, NY. Honest estimates, fair prices, fast turnaround. Call (347) 219-6510. Open Mon–Sat 8AM–6PM.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <style>
+    /* === TOKENS — hex first (universal), oklch on top where supported === */
+    :root {
+      /* Hex fallbacks — work on every browser */
+      --bg:        #1c1d27;
+      --bg-2:      #252630;
+      --bg-3:      #2d2f3b;
+      --accent:    #e07c2e;
+      --accent-hi: #f0953d;
+      --accent-lo: #b86018;
+      --t1:        #f2f3f8;
+      --t2:        #aaadb9;
+      --t3:        #72748a;
+      --warm:      #faf9f4;
+      --dark:      #1e1f2d;
+      --body:      #4a4c5e;
+      --muted:     #78798c;
+      --border:    #dedbd5;
+      --border-d:  #323446;
+      --nav-h: 68px;
+      --max-w: 1200px;
+      --fd: 'Bebas Neue', Impact, sans-serif;
+      --fb: 'DM Sans', system-ui, sans-serif;
+    }
+    /* Upgrade to oklch where the browser supports it */
+    @supports (color: oklch(0% 0 0)) {
+      :root {
+        --bg:        oklch(13% 0.012 258);
+        --bg-2:      oklch(17% 0.014 258);
+        --bg-3:      oklch(21% 0.014 258);
+        --accent:    oklch(71% 0.185 51);
+        --accent-hi: oklch(78% 0.19  51);
+        --accent-lo: oklch(55% 0.14  51);
+        --t1:        oklch(96% 0.004 258);
+        --t2:        oklch(72% 0.008 258);
+        --t3:        oklch(50% 0.010 258);
+        --warm:      oklch(98% 0.006 80);
+        --dark:      oklch(15% 0.018 258);
+        --body:      oklch(35% 0.016 258);
+        --muted:     oklch(52% 0.012 258);
+        --border:    oklch(88% 0.006 80);
+        --border-d:  oklch(24% 0.016 258);
+      }
+    }
+
+    /* === RESET === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--fb);
+      background: #1c1d27; background: var(--bg);  /* hex then var — var wins if supported */
+      color: #f2f3f8;      color: var(--t1);
+      overflow-x: hidden; line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* === LAYOUT === */
+    .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem; }
+
+    /* === REVEAL ===
+       Content is VISIBLE by default.
+       JS adds .will-animate to all .r elements, then the observer adds .on.
+       If JS is unavailable or slow, content shows immediately.
+    */
+    .r { /* visible by default — no opacity/transform here */ }
+    .will-animate { opacity: 0; transform: translateY(22px); transition: opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1); }
+    .will-animate.on { opacity: 1; transform: none; }
+    .d1 { transition-delay: .08s; }
+    .d2 { transition-delay: .16s; }
+    .d3 { transition-delay: .24s; }
+    .d4 { transition-delay: .32s; }
+    /* Respect reduced-motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      .will-animate { transition: none; }
+    }
+
+    /* ============================================================
+       NAV
+    ============================================================ */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-h); display: flex; align-items: center;
+      transition: background .3s, border-color .3s;
+      border-bottom: 1px solid transparent;
+    }
+    .nav.scrolled {
+      background: rgba(28,29,39,.93);
+      backdrop-filter: blur(18px);
+      border-bottom-color: var(--border-d);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%; max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem;
+    }
+    .nav-logo { line-height: 1.1; }
+    .nav-logo-a { font-family: var(--fd); font-size: 1.2rem; letter-spacing: .04em; }
+    .nav-logo-b { font-size: .65rem; color: var(--accent); letter-spacing: .12em; text-transform: uppercase; font-weight: 500; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: .875rem; color: var(--t2); transition: color .2s; }
+    .nav-links a:hover { color: var(--t1); }
+    .btn-call {
+      display: inline-flex; align-items: center; gap: .45rem;
+      background: var(--accent); color: var(--dark);
+      font-family: var(--fb); font-size: .875rem; font-weight: 600;
+      padding: .6rem 1.2rem; border: none; cursor: pointer;
+      letter-spacing: .01em; transition: background .2s, transform .15s;
+      white-space: nowrap; text-decoration: none;
+    }
+    .btn-call:hover { background: var(--accent-hi); transform: translateY(-1px); }
+    .btn-call svg { width: 15px; height: 15px; flex-shrink: 0; }
+    .nav-ham { display: none; background: none; border: none; cursor: pointer; color: var(--t1); padding: .4rem; }
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .nav-ham { display: flex; }
+      .btn-call .lbl { display: none; }
+      .btn-call { padding: .6rem .85rem; }
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      position: relative; min-height: 100svh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding-top: var(--nav-h); padding-bottom: 5rem; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background-image: url('https://images.unsplash.com/photo-1486006920555-c77dcf18193c?w=1800&q=80&auto=format&fit=crop');
+      background-size: cover; background-position: center 40%;
+    }
+    .hero-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(17,17,30,.97) 0%, rgba(17,17,30,.82) 55%, rgba(17,17,30,.55) 100%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 1;
+      background-image:
+        linear-gradient(rgba(140,140,155,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(140,140,155,.04) 1px, transparent 1px);
+      background-size: 56px 56px;
+    }
+    .hero-glow {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: radial-gradient(ellipse 75% 55% at 50% 100%, rgba(193,97,30,.1) 0%, transparent 65%);
+    }
+    .hero-content { position: relative; z-index: 2; }
+
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(224,124,46,.1); border: 1px solid rgba(224,124,46,.28);
+      color: var(--accent); font-size: .72rem; font-weight: 500;
+      letter-spacing: .1em; text-transform: uppercase; padding: .38rem .85rem;
+      margin-bottom: 1.25rem;
+    }
+    .hero-pill-dot {
+      width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
+      animation: blink 2s infinite;
+    }
+    @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:.35; } }
+
+    .hero-hed {
+      font-family: var(--fd);
+      font-size: clamp(4.2rem, 12.5vw, 10.5rem);
+      line-height: .9; letter-spacing: .025em; text-transform: uppercase;
+    }
+    .hero-hed .ln { display: block; }
+    .hero-hed .amber { color: var(--accent); }
+    .hero-hed .ghost { -webkit-text-stroke: 1px #727489; color: transparent; }
+
+    .hero-sub {
+      margin-top: 1.25rem; max-width: 460px;
+      font-size: 1.05rem; font-weight: 300; color: var(--t2); line-height: 1.65;
+    }
+
+    .hero-btns {
+      margin-top: 2.25rem; display: flex; flex-wrap: wrap; gap: .9rem; align-items: center;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: .55rem;
+      background: var(--accent); color: var(--dark);
+      font-family: var(--fb); font-size: 1rem; font-weight: 600;
+      padding: .9rem 2rem; border: none; cursor: pointer;
+      transition: background .2s, transform .15s; text-decoration: none;
+    }
+    .btn-primary:hover { background: var(--accent-hi); transform: translateY(-2px); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: .55rem;
+      background: transparent; color: var(--t2);
+      font-family: var(--fb); font-size: 1rem; font-weight: 400;
+      padding: .9rem 1.5rem; border: 1px solid var(--border-d);
+      cursor: pointer; transition: color .2s, border-color .2s, transform .15s; text-decoration: none;
+    }
+    .btn-ghost:hover { color: var(--t1); border-color: #575870; transform: translateY(-2px); }
+
+    .hero-stats {
+      margin-top: 3.5rem; display: flex; gap: 3rem; flex-wrap: wrap; align-items: center;
+    }
+    .stat-val { font-family: var(--fd); font-size: 2.4rem; line-height: 1; letter-spacing: .04em; }
+    .stat-lbl { font-size: .7rem; text-transform: uppercase; letter-spacing: .09em; color: var(--t3); margin-top: .2rem; }
+    .stat-div { width: 1px; height: 44px; background: var(--border-d); }
+
+    /* Hero right-side photo panel */
+    .hero-photo-panel {
+      position: absolute; right: 0; top: 0; bottom: 0; z-index: 2;
+      width: 38%; overflow: hidden;
+      clip-path: polygon(8% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+    .hero-photo-panel img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center;
+      filter: brightness(.75) saturate(.85);
+    }
+    .hero-photo-panel::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to right, #16171f 0%, transparent 30%),
+                  linear-gradient(to bottom, rgba(22,23,31,.4) 0%, transparent 25%),
+                  linear-gradient(to top,    rgba(22,23,31,.5) 0%, transparent 30%);
+    }
+    @media (max-width: 900px) { .hero-photo-panel { display: none; } }
+
+    /* Mobile-only hero image strip — hidden on desktop */
+    .hero-mobile-img {
+      display: none;
+    }
+    @media (max-width: 760px) {
+      .hero-mobile-img {
+        display: block;
+        margin-top: 2rem;
+        width: 100%;
+        height: 220px;
+        overflow: hidden;
+        position: relative;
+      }
+      .hero-mobile-img img {
+        width: 100%; height: 100%;
+        object-fit: cover; object-position: center 30%;
+        filter: brightness(.8) saturate(.85);
+        display: block;
+      }
+      .hero-mobile-img::after {
+        content: '';
+        position: absolute; inset: 0;
+        background: linear-gradient(to bottom, rgba(17,17,28,.3) 0%, rgba(17,17,28,.55) 100%);
+      }
+    }
+
+    .scroll-cue {
+      position: absolute; bottom: 1.75rem; right: 1.5rem; z-index: 2;
+      display: flex; flex-direction: column; align-items: center; gap: .4rem;
+    }
+    .scroll-cue-txt { font-size: .62rem; letter-spacing: .15em; text-transform: uppercase; color: var(--t3); writing-mode: vertical-rl; }
+    .scroll-cue-line {
+      width: 1px; height: 44px;
+      background: linear-gradient(to bottom, transparent, var(--accent));
+      animation: grow 2.2s ease-in-out infinite;
+    }
+    @keyframes grow {
+      0%   { transform: scaleY(0); transform-origin: top; }
+      49%  { transform: scaleY(1); transform-origin: top; }
+      50%  { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    /* ============================================================
+       TICKER
+    ============================================================ */
+    .ticker { background: var(--accent); overflow: hidden; padding: .7rem 0; white-space: nowrap; }
+    .ticker-track { display: inline-flex; animation: tick 30s linear infinite; }
+    .ticker-track:hover { animation-play-state: paused; }
+    .ticker-item {
+      display: inline-flex; align-items: center; gap: .9rem;
+      font-family: var(--fd); font-size: .85rem; letter-spacing: .07em; padding: 0 1.75rem;
+      color: var(--dark);
+    }
+    .ticker-sep { width: 4px; height: 4px; background: oklch(13% .012 258 / .4); border-radius: 50%; flex-shrink: 0; }
+    @keyframes tick { to { transform: translateX(-50%); } }
+
+    /* ============================================================
+       SERVICES
+    ============================================================ */
+    .sec-light { background: var(--warm); color: var(--dark); }
+    .services { padding: 6rem 0; }
+
+    .sec-eyebrow { font-size: .7rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--accent-lo); margin-bottom: .9rem; }
+    .sec-hed { font-family: var(--fd); font-size: clamp(2.4rem, 5vw, 3.75rem); line-height: .97; letter-spacing: .025em; text-transform: uppercase; color: var(--dark); }
+    .sec-hed.inv { color: var(--t1); }
+
+    .svc-hdr { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: end; margin-bottom: 3.5rem; }
+    .svc-intro { font-size: 1rem; font-weight: 300; color: var(--body); line-height: 1.7; max-width: 390px; }
+
+    .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); }
+    .svc-card { background: var(--warm); padding: 2.25rem 1.75rem; transition: background .22s; }
+    .svc-card:hover { background: #f5f3ee; }
+    .svc-card.dark { background: var(--dark); grid-column: span 2; }
+    .svc-card.dark:hover { background: #272838; }
+    .svc-ico { width: 38px; height: 38px; margin-bottom: 1.25rem; color: var(--accent-lo); stroke-width: 1.4; }
+    .svc-card.dark .svc-ico { color: var(--accent); }
+    .svc-name { font-family: var(--fd); font-size: 1.65rem; letter-spacing: .04em; text-transform: uppercase; color: var(--dark); line-height: 1.05; margin-bottom: .45rem; }
+    .svc-card.dark .svc-name { color: var(--t1); font-size: 1.9rem; }
+    .svc-desc { font-size: .88rem; color: var(--muted); line-height: 1.65; font-weight: 300; }
+    .svc-card.dark .svc-desc { color: var(--t2); }
+    .svc-tag { display: inline-block; margin-top: .85rem; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-lo); font-weight: 500; }
+    .svc-card.dark .svc-tag { color: var(--accent); }
+    /* Service card image strip */
+    .svc-img { width: 100%; height: 140px; object-fit: cover; object-position: center; margin-bottom: 1.5rem; display: block; filter: brightness(.75) saturate(.8); }
+    .svc-card.dark .svc-img { filter: brightness(.55) saturate(.6); }
+
+    @media (max-width: 760px) {
+      .svc-hdr { grid-template-columns: 1fr; gap: 1.5rem; }
+      .svc-grid { grid-template-columns: 1fr; }
+      .svc-card.dark { grid-column: span 1; }
+    }
+
+    /* ============================================================
+       TRUST
+    ============================================================ */
+    .trust { padding: 6rem 0; background: var(--bg); }
+    .trust-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; margin-top: 3rem; }
+
+    /* Trust photo */
+    .trust-img-wrap {
+      position: relative; overflow: hidden; margin-top: 2.5rem;
+      height: 280px;
+    }
+    .trust-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center;
+      filter: brightness(.8) saturate(.7);
+    }
+    .trust-img-wrap::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(28,29,39,.6) 0%, transparent 60%);
+    }
+    .trust-img-caption {
+      position: absolute; bottom: 1rem; left: 1rem; z-index: 1;
+      font-size: .7rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--accent); font-weight: 500;
+    }
+
+    .trust-quote {
+      font-family: var(--fd); font-size: clamp(1.75rem, 3.5vw, 2.7rem);
+      line-height: 1.12; letter-spacing: .025em; text-transform: uppercase; color: var(--t1);
+    }
+    .trust-quote em { color: var(--accent); font-style: normal; }
+    .trust-sub { margin-top: 1.25rem; font-size: .975rem; font-weight: 300; color: var(--t2); line-height: 1.7; max-width: 400px; }
+
+    .trust-list { display: flex; flex-direction: column; }
+    .trust-item { display: flex; gap: 1.25rem; padding: 1.25rem 0; border-bottom: 1px solid var(--border-d); }
+    .trust-item:first-child { border-top: 1px solid var(--border-d); }
+    .trust-num { font-family: var(--fd); font-size: 1.25rem; color: var(--accent); letter-spacing: .04em; min-width: 2.4rem; padding-top: .1rem; }
+    .trust-ttl { font-size: .975rem; font-weight: 500; color: var(--t1); margin-bottom: .3rem; }
+    .trust-dsc { font-size: .85rem; color: var(--t3); line-height: 1.65; font-weight: 300; }
+
+    @media (max-width: 760px) { .trust-layout { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+    /* ============================================================
+       REVIEWS
+    ============================================================ */
+    .reviews { padding: 6rem 0; background: var(--warm); }
+    .reviews-hdr { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 3.5rem; flex-wrap: wrap; gap: 1.5rem; }
+    .rating-big { font-family: var(--fd); font-size: 3.75rem; line-height: 1; color: var(--dark); letter-spacing: .04em; }
+    .stars { display: flex; gap: 3px; margin-top: .2rem; }
+    .star { width: 15px; height: 15px; fill: var(--accent-lo); }
+    .star.sm { width: 11px; height: 11px; }
+    .rating-lbl { font-size: .72rem; color: var(--muted); letter-spacing: .05em; margin-top: .2rem; }
+
+    /* === CAROUSEL === */
+    .carousel { position: relative; }
+
+    .carousel-viewport {
+      overflow: hidden;
+      /* extra bottom padding so the tallest slide doesn't clip */
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform .55s cubic-bezier(.16,1,.3,1);
+      will-change: transform;
+      align-items: stretch;
+    }
+
+    /* Each slide is exactly 1/3 viewport on desktop → 3-up */
+    .carousel-slide {
+      flex: 0 0 calc(100% / 3);
+      min-width: calc(100% / 3);
+      padding: 0 .5px; /* hairline gap via padding, keeps bg colour flush */
+      box-sizing: border-box;
+    }
+
+    .rv-card {
+      background: var(--warm);
+      padding: 2.25rem 2rem;
+      display: flex; flex-direction: column;
+      height: 100%;
+      border: 1px solid var(--border);
+      transition: border-color .2s;
+    }
+    .rv-card:hover { border-color: #c8c5be; }
+    .rv-card.feat { background: var(--dark); border-color: var(--border-d); }
+    .rv-card.feat:hover { border-color: #424356; }
+
+    .rv-qm { font-family: Georgia, serif; font-size: 3.5rem; line-height: .75; color: var(--accent-lo); margin-bottom: .75rem; }
+    .rv-card.feat .rv-qm { color: var(--accent); }
+    .rv-txt { font-size: .92rem; line-height: 1.75; color: var(--body); font-weight: 300; flex: 1; }
+    .rv-card.feat .rv-txt { color: var(--t2); }
+    .rv-foot { margin-top: 1.5rem; padding-top: .9rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .rv-card.feat .rv-foot { border-top-color: var(--border-d); }
+    .rv-name { font-size: .82rem; font-weight: 500; color: var(--dark); }
+    .rv-card.feat .rv-name { color: var(--t1); }
+
+    /* Controls row */
+    .carousel-controls {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 2rem;
+    }
+    .carousel-dots {
+      display: flex; gap: .5rem; align-items: center;
+    }
+    .carousel-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--muted); border: none; padding: 0; cursor: pointer;
+      transition: background .25s, transform .25s, width .25s;
+    }
+    .carousel-dot.active {
+      background: var(--accent-lo);
+      width: 22px; border-radius: 3px;
+    }
+    .carousel-arrows { display: flex; gap: .6rem; }
+    .carousel-btn {
+      width: 44px; height: 44px;
+      background: transparent; border: 1px solid var(--border);
+      color: var(--dark); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s, border-color .2s, color .2s, transform .15s;
+      flex-shrink: 0;
+    }
+    .carousel-btn:hover { background: var(--dark); border-color: var(--dark); color: var(--t1); transform: translateY(-1px); }
+    .carousel-btn:disabled { opacity: .3; pointer-events: none; }
+    .carousel-btn svg { width: 18px; height: 18px; stroke-width: 2; }
+
+    /* Counter */
+    .carousel-counter {
+      font-family: var(--fd); font-size: 1rem; letter-spacing: .08em;
+      color: var(--muted);
+    }
+    .carousel-counter .cur { color: var(--dark); }
+
+    @media (max-width: 880px) {
+      .carousel-slide { flex: 0 0 50%; min-width: 50%; }
+    }
+    @media (max-width: 560px) {
+      .carousel-slide { flex: 0 0 100%; min-width: 100%; padding: 0; }
+    }
+
+    /* ============================================================
+       HOURS & LOCATION
+    ============================================================ */
+    .location { padding: 6rem 0; background: var(--bg-2); }
+    .loc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 3rem; align-items: start; }
+
+    .hrs-table { width: 100%; border-collapse: collapse; }
+    .hrs-table tr { border-bottom: 1px solid var(--border-d); }
+    .hrs-table tr:last-child { border-bottom: none; }
+    .hrs-table td { padding: .8rem 0; font-size: .95rem; }
+    .hrs-table td:first-child { color: var(--t2); }
+    .hrs-table td:last-child { text-align: right; }
+    .open-hours { color: oklch(70% .155 145); }
+    .closed-hours { color: var(--t3); }
+    .hrs-table tr.today td { color: var(--accent) !important; }
+
+    .loc-label { font-size: .68rem; text-transform: uppercase; letter-spacing: .12em; color: var(--t3); margin-bottom: .35rem; }
+    .loc-row { display: flex; align-items: flex-start; gap: .75rem; margin-bottom: 1.75rem; }
+    .loc-row svg { width: 18px; height: 18px; color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+    .loc-txt { font-size: .975rem; color: var(--t1); line-height: 1.6; }
+    .loc-phone { color: var(--accent); font-weight: 500; }
+    .map-frame { margin-top: 1.5rem; height: 200px; overflow: hidden; background: var(--bg-3); }
+    .map-frame iframe { width: 100%; height: 100%; border: none; filter: grayscale(25%) contrast(1.05); }
+
+    @media (max-width: 760px) { .loc-grid { grid-template-columns: 1fr; gap: 3rem; } }
+
+    /* ============================================================
+       CTA
+    ============================================================ */
+    .cta-sec { padding: 7rem 0; background: var(--bg); position: relative; overflow: hidden; text-align: center; }
+    .cta-sec::before {
+      content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 560px; height: 280px;
+      background: radial-gradient(ellipse, rgba(224,124,46,.08) 0%, transparent 68%);
+      pointer-events: none;
+    }
+    .cta-hed {
+      font-family: var(--fd); font-size: clamp(2.8rem, 7vw, 5.75rem);
+      line-height: .95; letter-spacing: .025em; text-transform: uppercase; color: var(--t1);
+      margin-bottom: 1.25rem; position: relative; z-index: 1;
+    }
+    .cta-hed .amber { color: var(--accent); }
+    .cta-sub { font-size: 1rem; font-weight: 300; color: var(--t2); margin-bottom: 2rem; max-width: 460px; margin-left: auto; margin-right: auto; position: relative; z-index: 1; }
+    .cta-num-wrap { margin-bottom: 2rem; position: relative; z-index: 1; }
+    .cta-num-lbl { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--t3); margin-bottom: .3rem; }
+    .cta-num { font-family: var(--fd); font-size: clamp(2rem, 5vw, 3.25rem); letter-spacing: .07em; color: var(--accent); line-height: 1; }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer { background: #16171f; border-top: 1px solid var(--border-d); padding: 2.5rem 0; }
+    .foot-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.25rem; }
+    .foot-brand { font-family: var(--fd); font-size: 1.05rem; letter-spacing: .04em; color: var(--t2); }
+    .foot-addr { font-size: .75rem; color: var(--t3); margin-top: .3rem; }
+    .foot-right { font-size: .78rem; color: var(--t3); text-align: right; line-height: 1.75; }
+    .foot-right a { color: var(--accent); }
+
+    @media (max-width: 580px) { .foot-inner { flex-direction: column; align-items: flex-start; } .foot-right { text-align: left; } }
+
+    /* === SKIP LINK === */
+    .skip { position: absolute; left: -9999px; }
+    .skip:focus { left: 1rem; top: 1rem; background: var(--accent); color: var(--dark); padding: .5rem 1rem; z-index: 999; font-weight: 600; }
+
+    /* === SCROLL ANCHOR OFFSET === */
+    #services, #reviews, #hours { scroll-margin-top: var(--nav-h); }
+
+    /* ============================================================
+       MOBILE NAV DRAWER
+    ============================================================ */
+    .mobile-menu {
+      position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 99;
+      background: rgba(19,20,28,.97);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-d);
+      padding: 0 1rem 1.25rem;
+      display: flex; flex-direction: column;
+      transform: translateY(-110%);
+      opacity: 0;
+      transition: transform .38s cubic-bezier(.16,1,.3,1), opacity .3s;
+      pointer-events: none;
+    }
+    .mobile-menu.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .mobile-menu a {
+      font-size: 1rem; font-weight: 400; color: var(--t2);
+      padding: 1rem 0; border-bottom: 1px solid var(--border-d);
+      display: block; transition: color .2s;
+    }
+    .mobile-menu a:last-child { border-bottom: none; padding-bottom: 0; }
+    .mobile-menu a:hover, .mobile-menu a:focus { color: var(--accent); }
+
+    /* ============================================================
+       STICKY BOTTOM CALL BAR — mobile only
+    ============================================================ */
+    .sticky-call {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 98;
+      background: var(--accent);
+      color: var(--dark);
+      font-family: var(--fb); font-weight: 700; font-size: .95rem;
+      letter-spacing: .01em;
+      align-items: center; justify-content: center; gap: .55rem;
+      padding: 1rem 1.5rem;
+      text-decoration: none;
+      box-shadow: 0 -6px 24px oklch(71% .185 51 / .25);
+      transition: background .2s;
+      /* safe-area for devices with home indicator */
+      padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    }
+    .sticky-call:active { background: var(--accent-hi); }
+    .sticky-call svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* ============================================================
+       MOBILE OVERRIDES  (≤ 760px)
+    ============================================================ */
+    @media (max-width: 760px) {
+
+      /* Show sticky call bar; add bottom space so content isn't hidden behind it */
+      .sticky-call { display: flex; }
+      body { padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px)); }
+
+      /* Tighter container */
+      .wrap { padding: 0 1.1rem; }
+
+      /* ---- HERO ---- */
+      .hero { padding-bottom: 3rem; }
+      /* Lighter overlay on mobile so the bg image shows through */
+      .hero-bg::after { background: rgba(17,17,28,.72); }
+      /* Tighter headline that won't overflow at 320px */
+      .hero-hed { font-size: clamp(2.8rem, 13.5vw, 4.5rem); }
+      .hero-pill { font-size: .68rem; }
+      .hero-sub { font-size: .95rem; margin-top: .9rem; max-width: 100%; }
+      /* Stack buttons full-width */
+      .hero-btns { margin-top: 1.75rem; flex-direction: column; gap: .7rem; }
+      .hero-btns .btn-primary,
+      .hero-btns .btn-ghost { width: 100%; justify-content: center; font-size: .975rem; padding: 1rem; }
+      /* Compact stats row */
+      .hero-stats { margin-top: 2.25rem; gap: 2rem; }
+      .stat-val { font-size: 2rem; }
+      .stat-lbl { font-size: .65rem; }
+      .stat-div { height: 36px; }
+      /* Hide scroll cue on mobile */
+      .scroll-cue { display: none; }
+
+      /* ---- SECTION PADDING ---- */
+      .services  { padding: 3.5rem 0; }
+      .trust     { padding: 3.5rem 0; }
+      .reviews   { padding: 3.5rem 0; }
+      .location  { padding: 3.5rem 0; }
+      .cta-sec   { padding: 4rem 0; }
+
+      /* ---- SECTION HEADINGS ---- */
+      .sec-hed { font-size: clamp(1.9rem, 8vw, 2.8rem); }
+      .svc-hdr { margin-bottom: 2rem; }
+
+      /* ---- SERVICES ---- */
+      .svc-img { height: 160px; }
+
+      /* ---- TRUST ---- */
+      .trust-layout { margin-top: 1.75rem; }
+      .trust-img-wrap { height: 220px; margin-top: 2rem; }
+
+      /* ---- REVIEWS ---- */
+      .reviews-hdr { flex-direction: column; align-items: flex-start; gap: .9rem; }
+      /* Override the inline text-align:right on the rating block */
+      .reviews-hdr > div:last-child { text-align: left !important; }
+      .reviews-hdr > div:last-child .stars { justify-content: flex-start; }
+      .rv-card { padding: 1.75rem 1.25rem; }
+
+      /* ---- HOURS / LOCATION ---- */
+      .hrs-table td { font-size: .9rem; padding: .7rem 0; }
+      .map-frame { height: 220px; }
+
+      /* ---- CTA ---- */
+      .cta-hed { font-size: clamp(2.2rem, 10vw, 3.2rem); }
+      .cta-sec .btn-primary { width: 100%; justify-content: center; }
+
+      /* ---- FOOTER ---- */
+      /* Add a bit of padding above footer so sticky bar doesn't clip it */
+      .footer { padding-bottom: 1rem; }
+    }
+
+    /* Very small phones (320px) */
+    @media (max-width: 380px) {
+      .hero-hed { font-size: 2.75rem; }
+      .hero-stats { gap: 1rem; }
+      .stat-val { font-size: 1.75rem; }
+      .hero-pill { display: none; } /* trade off: clean up at 320px */
+    }
+  </style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- ======================================================
+     NAV
+====================================================== -->
+<nav class="nav" id="nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" aria-label="New Complete Auto Repair home">
+      <div class="nav-logo-a">New Complete</div>
+      <div class="nav-logo-b">Auto Repair &amp; Collision · Flushing NY</div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#hours">Hours &amp; Location</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:.75rem;">
+      <a href="tel:+13472196510" class="btn-call">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.35 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72 12.05 12.05 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.05 12.05 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="lbl">(347) 219-6510</span>
+      </a>
+      <button class="nav-ham" aria-label="Menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile nav drawer -->
+<div class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" role="dialog" aria-modal="true" hidden>
+  <a href="#services" class="mobile-menu-link">Services</a>
+  <a href="#reviews"  class="mobile-menu-link">Reviews</a>
+  <a href="#hours"    class="mobile-menu-link">Hours &amp; Location</a>
+  <a href="tel:+13472196510" class="mobile-menu-link" style="color:var(--accent);font-weight:600;">Call (347) 219-6510</a>
+</div>
+
+<!-- ======================================================
+     HERO
+====================================================== -->
+<main id="main">
+<section class="hero" aria-labelledby="hero-hed">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-glow"  aria-hidden="true"></div>
+  <div class="hero-photo-panel" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1530046339160-ce3e530de191?w=900&q=80&auto=format&fit=crop" alt="">
+  </div>
+  <div class="wrap">
+    <div class="hero-content">
+      <div class="hero-pill r"><span class="hero-pill-dot" aria-hidden="true"></span>Flushing, Queens · Trusted for Decades</div>
+      <h1 class="hero-hed" id="hero-hed">
+        <span class="ln r">Honest.</span>
+        <span class="ln amber r d1">Fast.</span>
+        <span class="ln ghost r d2">Affordable.</span>
+      </h1>
+      <p class="hero-sub r d2">
+        Flushing's most trusted auto repair shop. Expert mechanics, fair prices — and none of the dealership runaround.
+      </p>
+      <div class="hero-btns r d3">
+        <a href="tel:+13472196510" class="btn-primary">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.35 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72 12.05 12.05 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.05 12.05 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call Now
+        </a>
+        <a href="https://maps.google.com/?q=42-22+Haight+St,+Flushing,+NY+11355" target="_blank" rel="noopener noreferrer" class="btn-ghost">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Get Directions
+        </a>
+      </div>
+      <div class="hero-stats r d4">
+        <div><div class="stat-val">6</div><div class="stat-lbl">Days&nbsp;a&nbsp;Week</div></div>
+        <div class="stat-div" aria-hidden="true"></div>
+        <div><div class="stat-val">5★</div><div class="stat-lbl">Google&nbsp;Reviews</div></div>
+      </div>
+
+      <!-- Mobile-only photo strip shown below the text -->
+      <div class="hero-mobile-img r d4" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1530046339160-ce3e530de191?w=900&q=80&auto=format&fit=crop" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true">
+    <span class="scroll-cue-txt">Scroll</span>
+    <div class="scroll-cue-line"></div>
+  </div>
+</section>
+
+<!-- ======================================================
+     TICKER
+====================================================== -->
+<div class="ticker" aria-hidden="true" role="presentation">
+  <div class="ticker-track">
+    <span class="ticker-item">Auto Repair <span class="ticker-sep"></span></span>
+    <span class="ticker-item">Collision &amp; Body Work <span class="ticker-sep"></span></span>
+    <span class="ticker-item">Electrical Diagnostics <span class="ticker-sep"></span></span>
+    <span class="ticker-item">Transmission Service <span class="ticker-sep"></span></span>
+    <span class="ticker-item">Brakes &amp; Suspension <span class="ticker-sep"></span></span>
+    <span class="ticker-item">Honest Estimates <span class="ticker-sep"></span></span>
+    <span class="ticker-item">Flushing NY 11355 <span class="ticker-sep"></span></span>
+    <span class="ticker-item">Mon–Sat 8AM–6PM <span class="ticker-sep"></span></span>
+    <span class="ticker-item">Auto Repair <span class="ticker-sep"></span></span>
+    <span class="ticker-item">Collision &amp; Body Work <span class="ticker-sep"></span></span>
+    <span class="ticker-item">Electrical Diagnostics <span class="ticker-sep"></span></span>
+    <span class="ticker-item">Transmission Service <span class="ticker-sep"></span></span>
+    <span class="ticker-item">Brakes &amp; Suspension <span class="ticker-sep"></span></span>
+    <span class="ticker-item">Honest Estimates <span class="ticker-sep"></span></span>
+    <span class="ticker-item">Flushing NY 11355 <span class="ticker-sep"></span></span>
+    <span class="ticker-item">Mon–Sat 8AM–6PM <span class="ticker-sep"></span></span>
+  </div>
+</div>
+
+<!-- ======================================================
+     SERVICES
+====================================================== -->
+<section class="services sec-light" id="services" aria-labelledby="svc-hed">
+  <div class="wrap">
+    <div class="svc-hdr">
+      <div>
+        <p class="sec-eyebrow r">What We Do</p>
+        <h2 class="sec-hed r d1" id="svc-hed">Full Service.<br>One Roof.</h2>
+      </div>
+      <p class="svc-intro r d2">From routine maintenance to complex repairs and collision work — our experienced mechanics handle it all. No unnecessary upsells, just the work your car actually needs.</p>
+    </div>
+
+    <div class="svc-grid">
+
+      <!-- FEATURED card: spans 2 cols -->
+      <div class="svc-card dark r">
+        <img class="svc-img" src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?w=800&q=75&auto=format&fit=crop" alt="Mechanic working on engine" loading="lazy">
+        <svg class="svc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        <div class="svc-name">Auto Repair &amp; Mechanical</div>
+        <p class="svc-desc">Engine diagnostics, electrical systems, transmission, brakes, suspension — we tackle the jobs other shops turn away.</p>
+        <span class="svc-tag">All Makes &amp; Models</span>
+      </div>
+
+      <div class="svc-card r d1">
+        <img class="svc-img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=75&auto=format&fit=crop" alt="Car body repair and painting" loading="lazy">
+        <svg class="svc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <div class="svc-name">Collision &amp; Body</div>
+        <p class="svc-desc">Dent repair, panel replacement, paint matching, and full collision restoration. Your car comes back looking showroom-ready.</p>
+        <span class="svc-tag">Full Restoration</span>
+      </div>
+
+      <div class="svc-card r d1">
+        <img class="svc-img" src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600&q=75&auto=format&fit=crop" alt="Car diagnostic equipment" loading="lazy">
+        <svg class="svc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        <div class="svc-name">Electrical &amp; Diagnostics</div>
+        <p class="svc-desc">Complex wiring, sensors, computer systems. We've solved electrical gremlins that stumped other shops — fast and without the fortune.</p>
+        <span class="svc-tag">Same-Day Diagnosis</span>
+      </div>
+
+      <div class="svc-card r d2">
+        <img class="svc-img" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=75&auto=format&fit=crop&crop=center" alt="Oil change and maintenance" loading="lazy">
+        <svg class="svc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div class="svc-name">Preventive Maintenance</div>
+        <p class="svc-desc">Oil changes, filters, fluids, timing belts, and tune-ups. Keep your car healthy before small issues become big bills.</p>
+        <span class="svc-tag">Oil · Brakes · Fluids</span>
+      </div>
+
+      <div class="svc-card r d2">
+        <img class="svc-img" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=75&auto=format&fit=crop" alt="Headlight and mirror repair" loading="lazy">
+        <svg class="svc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <div class="svc-name">Headlights &amp; Mirrors</div>
+        <p class="svc-desc">Replacement, restoration, and alignment. Bring your own parts or let us source them — either way, done right.</p>
+        <span class="svc-tag">Quick Turnaround</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     WHY CHOOSE US
+====================================================== -->
+<section class="trust" aria-labelledby="trust-hed">
+  <div class="wrap">
+    <p class="sec-eyebrow r">Why Choose Us</p>
+    <div class="trust-layout">
+      <div>
+        <h2 class="trust-quote r" id="trust-hed">
+          The Shop That <em>Actually</em><br>Tells You The Truth.
+        </h2>
+        <p class="trust-sub r d1">Adam and the team have built their reputation on honesty, speed, and skill — not on padding invoices. When your car leaves our shop, it's actually fixed.</p>
+        <div class="trust-img-wrap r d2">
+          <img src="https://images.unsplash.com/photo-1609695001903-c2f3bc70a5e3?w=800&q=80&auto=format&fit=crop" alt="Mechanic performing expert repairs in shop" loading="lazy">
+          <span class="trust-img-caption">Expert mechanics · Flushing, NY</span>
+        </div>
+      </div>
+      <div class="trust-list">
+        <div class="trust-item r">
+          <span class="trust-num">01</span>
+          <div>
+            <div class="trust-ttl">Transparent Pricing</div>
+            <div class="trust-dsc">Clear estimates before work begins. No surprise charges. We regularly come in at a fraction of dealership rates.</div>
+          </div>
+        </div>
+        <div class="trust-item r d1">
+          <span class="trust-num">02</span>
+          <div>
+            <div class="trust-ttl">Fast, Reliable Turnaround</div>
+            <div class="trust-dsc">Jobs that take other shops days, we finish in hours. Transmission service and power steering pump — done in half an afternoon.</div>
+          </div>
+        </div>
+        <div class="trust-item r d2">
+          <span class="trust-num">03</span>
+          <div>
+            <div class="trust-ttl">Expert Mechanics</div>
+            <div class="trust-dsc">Seasoned technicians who know their stuff. Solved difficult electrical faults on old vehicles in under an hour, without charging a fortune.</div>
+          </div>
+        </div>
+        <div class="trust-item r d3">
+          <span class="trust-num">04</span>
+          <div>
+            <div class="trust-ttl">No Unnecessary Upsells</div>
+            <div class="trust-dsc">We fix what's broken and tell you what's coming. Your trust is more valuable to us than a one-time upsell.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     REVIEWS
+====================================================== -->
+<section class="reviews sec-light" id="reviews" aria-labelledby="rv-hed">
+  <div class="wrap">
+    <div class="reviews-hdr">
+      <div>
+        <p class="sec-eyebrow r">Customer Reviews</p>
+        <h2 class="sec-hed r d1" id="rv-hed">Don't Take<br>Our Word For It.</h2>
+      </div>
+      <div class="r d1" style="text-align:right;">
+        <div class="rating-big">5.0</div>
+        <div class="stars" aria-label="5 out of 5 stars">
+          <svg class="star" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg class="star" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <div class="rating-lbl">Google Reviews</div>
+      </div>
+    </div>
+
+    <!-- Carousel -->
+    <div class="carousel r d2" id="rv-carousel" aria-roledescription="carousel" aria-label="Customer reviews">
+
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="rv-track" aria-live="polite">
+
+          <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="Review 1 of 5">
+            <div class="rv-card feat">
+              <div class="rv-qm" aria-hidden="true">"</div>
+              <p class="rv-txt">Adam is honest, on time, and gives reliable estimates about what's needed. They fixed a difficult electrical problem on an old Ford in under an hour without charging a fortune. My '08 Mercedes E350 — transmission service and worn power steering pump — done in half an afternoon for 1/3 the price of a dealership. That's a Merry Christmas and Happy New Year!</p>
+              <div class="rv-foot">
+                <span class="rv-name">Douglas R.</span>
+                <div class="stars" aria-label="5 stars"><svg class="star sm" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star sm" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star sm" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star sm" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star sm" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="Review 2 of 5">
+            <div class="rv-card">
+              <div class="rv-qm" aria-hidden="true">"</div>
+              <p class="rv-txt">My 2012 VW GTI wouldn't start. After 2 months of back and forth with other shops, I came to New Complete. Adam and John were very knowledgeable in diagnosing and getting my car back on the road. Work was done fast and prices are fair. Will return.</p>
+              <div class="rv-foot">
+                <span class="rv-name">Abel R.</span>
+                <div class="stars" aria-label="5 stars"><svg class="star sm" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star sm" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star sm" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star sm" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star sm" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="Review 3 of 5">
+            <div class="rv-card">
+              <div class="rv-qm" aria-hidden="true">"</div>
+              <p class="rv-txt">As a high school student, I was nervous about getting my car fixed. The staff made everything easy — friendly and took the time to explain what was wrong in a way I could understand. Quick repair, no upsells. My car runs great now.</p>
+              <div class="rv-foot">
+                <span class="rv-name">Joaavo</span>
+                <div class="stars" aria-label="5 stars"><svg class="star sm" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star sm" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star sm" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star sm" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star sm" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="Review 4 of 5">
+            <div class="rv-card">
+              <div class="rv-qm" aria-hidden="true">"</div>
+              <p class="rv-txt">Came through a friend's recommendation. Needed my headlight and mirror replaced — fixed quickly since I had the parts. Price is very reasonable and they did a great job. Staff are nice and helpful.</p>
+              <div class="rv-foot">
+                <span class="rv-name">Brian L.</span>
+                <div class="stars" aria-label="5 stars"><svg class="star sm" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star sm" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star sm" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star sm" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star sm" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="Review 5 of 5">
+            <div class="rv-card">
+              <div class="rv-qm" aria-hidden="true">"</div>
+              <p class="rv-txt">The people working there are really nice, great service, and gave me a good price for fixing my vehicle. They work on a variety of things from mechanics to body work and so many other things. They will try their best to fix your car. I am satisfied with the results. Highly recommend — you won't regret it.</p>
+              <div class="rv-foot">
+                <span class="rv-name">Google Reviewer</span>
+                <div class="stars" aria-label="5 stars"><svg class="star sm" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star sm" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star sm" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star sm" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg class="star sm" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /track -->
+      </div><!-- /viewport -->
+
+      <!-- Controls -->
+      <div class="carousel-controls">
+        <div class="carousel-dots" id="rv-dots" role="tablist" aria-label="Go to review"></div>
+        <span class="carousel-counter"><span class="cur" id="rv-cur">1</span> / <span id="rv-tot">5</span></span>
+        <div class="carousel-arrows">
+          <button class="carousel-btn" id="rv-prev" aria-label="Previous review">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="carousel-btn" id="rv-next" aria-label="Next review">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div><!-- /carousel -->
+  </div>
+</section>
+
+<!-- ======================================================
+     HOURS & LOCATION
+====================================================== -->
+<section class="location" id="hours" aria-labelledby="loc-hed">
+  <div class="wrap">
+    <p class="sec-eyebrow r">Hours &amp; Location</p>
+    <h2 class="sec-hed inv r d1" id="loc-hed" style="margin-bottom:3rem;">Come See Us.</h2>
+    <div class="loc-grid">
+      <div>
+        <table class="hrs-table" aria-label="Business hours">
+          <tbody>
+            <tr><td>Monday</td><td class="open-hours">8:00 AM – 6:00 PM</td></tr>
+            <tr><td>Tuesday</td><td class="open-hours">8:00 AM – 6:00 PM</td></tr>
+            <tr><td>Wednesday</td><td class="open-hours">8:00 AM – 6:00 PM</td></tr>
+            <tr><td>Thursday</td><td class="open-hours">8:00 AM – 6:00 PM</td></tr>
+            <tr><td>Friday</td><td class="open-hours">8:00 AM – 6:00 PM</td></tr>
+            <tr><td>Saturday</td><td class="open-hours">8:00 AM – 6:00 PM</td></tr>
+            <tr><td>Sunday</td><td class="closed-hours">Closed</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <p class="loc-label">Address</p>
+        <div class="loc-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div class="loc-txt">42-22 Haight St<br>Flushing, NY 11355</div>
+        </div>
+        <p class="loc-label">Phone</p>
+        <div class="loc-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.35 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72 12.05 12.05 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.05 12.05 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <a href="tel:+13472196510" class="loc-txt loc-phone">(347) 219-6510</a>
+        </div>
+        <div class="map-frame r">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9!2d-73.82994!3d40.75881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c260a1f3a5e1e1%3A0x1!2s42-22+Haight+St%2C+Flushing%2C+NY+11355!5e0!3m2!1sen!2sus!4v1"
+            title="New Complete Auto Repair location"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            aria-label="Map showing 42-22 Haight St, Flushing NY">
+          </iframe>
+        </div>
+        <a href="https://maps.google.com/?q=42-22+Haight+St,+Flushing,+NY+11355" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="margin-top:1.1rem;display:inline-flex;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Open in Google Maps
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     CTA
+====================================================== -->
+<section class="cta-sec" aria-labelledby="cta-hed">
+  <div class="wrap">
+    <h2 class="cta-hed r" id="cta-hed">
+      Ready to Get<br><span class="amber">Back On</span><br>The Road?
+    </h2>
+    <p class="cta-sub r d1">Honest estimates, fast service, fair prices. No dealership drama.</p>
+    <div class="cta-num-wrap r d2">
+      <div class="cta-num-lbl">Call or Text</div>
+      <a href="tel:+13472196510" class="cta-num">(347) 219-6510</a>
+    </div>
+    <div class="r d3">
+      <a href="tel:+13472196510" class="btn-primary" style="font-size:1.05rem;padding:1rem 2.5rem;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.35 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72 12.05 12.05 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.05 12.05 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call (347) 219-6510
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ======================================================
+     FOOTER
+====================================================== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-inner">
+      <div>
+        <div class="foot-brand">New Complete Auto Repair &amp; Collision Inc.</div>
+        <div class="foot-addr">42-22 Haight St, Flushing, NY 11355</div>
+      </div>
+      <div class="foot-right">
+        <div><a href="tel:+13472196510">(347) 219-6510</a></div>
+        <div>Mon–Sat: 8 AM – 6 PM &nbsp;·&nbsp; Sun: Closed</div>
+        <div style="margin-top:.5rem;opacity:.55;">© 2025 New Complete Auto Repair &amp; Collision Inc.</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Sticky bottom call bar — mobile only -->
+<a href="tel:+13472196510" class="sticky-call" aria-label="Call us at (347) 219-6510">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.35 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72 12.05 12.05 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.05 12.05 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  Call Now &nbsp;·&nbsp; (347) 219-6510
+</a>
+
+<script>
+  // Nav scroll state
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40), { passive: true });
+
+  // =========================================
+  // MOBILE HAMBURGER MENU
+  // =========================================
+  const ham     = document.querySelector('.nav-ham');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  function openMenu() {
+    mobileMenu.removeAttribute('hidden');
+    // force reflow so transition fires
+    mobileMenu.getBoundingClientRect();
+    mobileMenu.classList.add('open');
+    ham.setAttribute('aria-expanded', 'true');
+    ham.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+  }
+  function closeMenu() {
+    mobileMenu.classList.remove('open');
+    ham.setAttribute('aria-expanded', 'false');
+    ham.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
+    // hide after transition so it's not tab-focusable
+    mobileMenu.addEventListener('transitionend', () => mobileMenu.setAttribute('hidden', ''), { once: true });
+  }
+
+  ham.addEventListener('click', () => {
+    mobileMenu.hasAttribute('hidden') || !mobileMenu.classList.contains('open') ? openMenu() : closeMenu();
+  });
+
+  // Close when a nav link is tapped
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+  // Close on outside click
+  document.addEventListener('click', e => {
+    if (mobileMenu.classList.contains('open') && !nav.contains(e.target) && !mobileMenu.contains(e.target)) closeMenu();
+  });
+
+  // Scroll reveal — content-first: elements are visible by default.
+  // JS adds .will-animate to hide them, then observer reveals them.
+  // A 500ms failsafe guarantees visibility even if observer never fires.
+  (function () {
+    var els = document.querySelectorAll('.r');
+    els.forEach(function(el) { el.classList.add('will-animate'); });
+
+    // Hard failsafe: if anything goes wrong, everything shows after 500ms
+    var failsafe = setTimeout(function() {
+      els.forEach(function(el) { el.classList.add('on'); });
+    }, 500);
+
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('on');
+            io.unobserve(e.target);
+            // Cancel failsafe once we know the observer is working
+            clearTimeout(failsafe);
+            failsafe = setTimeout(function() {
+              document.querySelectorAll('.will-animate:not(.on)').forEach(function(el) { el.classList.add('on'); });
+            }, 800);
+          }
+        });
+      }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+      els.forEach(function(el) { io.observe(el); });
+    } else {
+      // No IntersectionObserver support — show everything immediately
+      clearTimeout(failsafe);
+      els.forEach(function(el) { el.classList.add('on'); });
+    }
+  })();
+
+  // Highlight today in hours table
+  const DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const today = DAYS[new Date().getDay()];
+  document.querySelectorAll('.hrs-table tr').forEach(row => {
+    if (row.cells[0]?.textContent.trim() === today) row.classList.add('today');
+  });
+
+  // =========================================
+  // CAROUSEL
+  // =========================================
+  (function () {
+    const track   = document.getElementById('rv-track');
+    const dotsWrap= document.getElementById('rv-dots');
+    const btnPrev = document.getElementById('rv-prev');
+    const btnNext = document.getElementById('rv-next');
+    const curEl   = document.getElementById('rv-cur');
+    const totEl   = document.getElementById('rv-tot');
+    const slides  = Array.from(track.querySelectorAll('.carousel-slide'));
+    const N       = slides.length;
+
+    // How many slides are visible at this breakpoint?
+    function perView() {
+      const w = window.innerWidth;
+      if (w <= 560) return 1;
+      if (w <= 880) return 2;
+      return 3;
+    }
+
+    let cur = 0;          // index of leftmost visible slide
+    let pv  = perView();  // visible count
+    let autoTimer = null;
+
+    // Build dots — one per "page"
+    function buildDots() {
+      dotsWrap.innerHTML = '';
+      pv = perView();
+      const pages = Math.ceil(N / pv);
+      totEl.textContent = pages;
+      for (let i = 0; i < pages; i++) {
+        const btn = document.createElement('button');
+        btn.className = 'carousel-dot' + (i === Math.floor(cur / pv) ? ' active' : '');
+        btn.setAttribute('role', 'tab');
+        btn.setAttribute('aria-label', `Page ${i + 1}`);
+        btn.setAttribute('aria-selected', i === Math.floor(cur / pv) ? 'true' : 'false');
+        btn.addEventListener('click', () => goTo(i * pv));
+        dotsWrap.appendChild(btn);
+      }
+    }
+
+    function updateDots() {
+      const page = Math.floor(cur / pv);
+      dotsWrap.querySelectorAll('.carousel-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === page);
+        d.setAttribute('aria-selected', i === page ? 'true' : 'false');
+      });
+      curEl.textContent = page + 1;
+    }
+
+    function goTo(idx) {
+      pv = perView();
+      const maxIdx = Math.max(0, N - pv);
+      cur = Math.min(Math.max(idx, 0), maxIdx);
+      // Snap to page boundary so partial slides don't show mid-page
+      const page = Math.round(cur / pv);
+      cur = Math.min(page * pv, maxIdx);
+
+      const pct = (cur / N) * 100;
+      track.style.transform = `translateX(-${pct}%)`;
+      updateDots();
+      btnPrev.disabled = cur === 0;
+      btnNext.disabled = cur >= maxIdx;
+    }
+
+    function next() { goTo(cur + pv); }
+    function prev() { goTo(cur - pv); }
+
+    btnPrev.addEventListener('click', () => { resetAuto(); prev(); });
+    btnNext.addEventListener('click', () => { resetAuto(); next(); });
+
+    // Keyboard
+    document.getElementById('rv-carousel').addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft')  { resetAuto(); prev(); }
+      if (e.key === 'ArrowRight') { resetAuto(); next(); }
+    });
+
+    // Touch / swipe
+    let touchX = null;
+    track.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', e => {
+      if (touchX === null) return;
+      const dx = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 40) { resetAuto(); dx < 0 ? next() : prev(); }
+      touchX = null;
+    }, { passive: true });
+
+    // Auto-advance
+    function startAuto() {
+      autoTimer = setInterval(() => {
+        pv = perView();
+        if (cur + pv >= N) goTo(0); else next();
+      }, 5000);
+    }
+    function resetAuto() { clearInterval(autoTimer); startAuto(); }
+
+    // Pause on hover / focus
+    const section = document.getElementById('rv-carousel');
+    section.addEventListener('mouseenter', () => clearInterval(autoTimer));
+    section.addEventListener('focusin',    () => clearInterval(autoTimer));
+    section.addEventListener('mouseleave', startAuto);
+    section.addEventListener('focusout',   e => {
+      if (!section.contains(e.relatedTarget)) startAuto();
+    });
+
+    // Rebuild on resize (breakpoint changes perView)
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => { buildDots(); goTo(0); }, 120);
+    });
+
+    // Init
+    buildDots();
+    goTo(0);
+    startAuto();
+  })();
+</script>
+</body>
+</html>
